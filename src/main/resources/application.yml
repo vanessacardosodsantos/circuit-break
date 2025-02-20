@@ -1,0 +1,26 @@
+spring:
+    data:
+        mongodb:
+            host: localhost
+            port: 27017
+            authentication-database: admin
+            username: root
+            password: example
+            database: circuit-breaker
+
+client:
+    comments:
+        url: http://localhost:8082
+
+resilience4j.circuitbreaker:
+    instances:    #somente uma instancia que é a 'comments'
+        comments:
+            slidingWindowSize: 8 #tamananho da janela para
+            #realizar as chamadas quando o circuito está fechado.
+            #Ou seja, vai fazer 8 retentativas de requisições. Ele vai monitara para fazer o calculo,
+            #para saber se abre ou não o circuito
+            minimumNumberOfCalls: 4 #número minimo de falhas, se as 4 derem falham, já abre o circuito
+            permittedNumberOfCallsInHalfOpenState: 2
+            waitDurationInOpenState: 10000
+            #      slowCallDurationThreshold: 500
+            #      slowCallRateThreshold: 20 #porcentagem
