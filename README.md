@@ -1,6 +1,6 @@
 Projeto que implementa Circuit Breaker e Fallback utilizando Java, Spring Boot, MongoDB, Redis e Resilience4j. Basicamente é um serviço backend focado numa implementação de posts de redes sociais.
 
-) padrão Circuit Breaker impede que um serviço continue chamando outro que está falhando, evitando sobrecarga e melhorando a recuperação.
+O padrão Circuit Breaker impede que um serviço continue chamando outro que está falhando, evitando sobrecarga e melhorando a recuperação.
 Quando usar? 
 - Quando sua aplicação consome APIs externas ou microserviços que podem ficar indisponíveis ou apresentar alta latência.
 - Se um serviço falhar repetidamente e não houver um mecanismo de proteção, pode sobrecarregar a aplicação chamadora, levando a falhas em cadeia.
