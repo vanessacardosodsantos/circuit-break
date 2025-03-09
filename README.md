@@ -1,12 +1,17 @@
-Projeto que implementa Circuit Breaker e Fallback utilizando Java, Spring Boot, MongoDB, Redis e Resilience4j.
-A padrão Circuit Breaker impede que um serviço continue chamando outro que está falhando, evitando sobrecarga e melhorando a recuperação.
+Projeto que implementa Circuit Breaker e Fallback utilizando Java, Spring Boot, MongoDB, Redis e Resilience4j. Basicamente é um serviço backend focado numa implementação de posts de redes sociais.
+
+) padrão Circuit Breaker impede que um serviço continue chamando outro que está falhando, evitando sobrecarga e melhorando a recuperação.
 Quando usar? 
 - Quando sua aplicação consome APIs externas ou microserviços que podem ficar indisponíveis ou apresentar alta latência.
 - Se um serviço falhar repetidamente e não houver um mecanismo de proteção, pode sobrecarregar a aplicação chamadora, levando a falhas em cadeia.
 - Se um serviço já está sobrecarregado, um Circuit Breaker pode interromper chamadas desnecessárias até que ele se recupere, reduzindo o consumo de recursos.
 - O Circuit Breaker pode ser configurado para permitir algumas falhas antes de abrir o circuito, permitindo uma resposta mais tolerante a falhas intermitentes.
 - Quando um serviço cai, o Circuit Breaker pode abrir por um tempo e, depois, permitir algumas requisições de teste para verificar se o serviço voltou ao normal.
-Basicamente é um serviço backend focado numa implementação de posts de redes sociais. 
+
+Estados do Circuit Breaker
+- Closed (Fechado): Todas as chamadas são permitidas. Se falhas consecutivas ocorrem, ele pode mudar para Open.
+- Open (Aberto): As chamadas falham imediatamente sem serem enviadas para o serviço real. Ele pode entrar em Half-Open após um tempo.
+- Half-Open (Meio Aberto): Algumas requisições de teste são permitidas para verificar se o serviço voltou a funcionar. Se forem bem-sucedidas, o circuito volta para Closed.
 
 ## Tecnologias
 - Java 17
